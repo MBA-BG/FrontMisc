@@ -2,21 +2,12 @@ import { useState, useMemo } from "react";
 
 import AccordionPanel from "./AccordionPanel/AccordionPanel";
 import Container from "@mui/material/Container";
-import { useTheme, ThemeProvider, createTheme } from "@mui/material";
-import CssBaseline from "@mui/material/CssBaseline";
+
+
 
 const FAQ = (props) => {
-  const darkTheme = useMemo(() =>
-    createTheme({
-      palette: {
-        mode: "dark",
-        background: {
-          default: "#222222",
-        },
-      },
-    })
-  );
 
+  
   const [questionsState, setQuestionsState] = useState([
     "Who are the monsters?",
     "What are your future plans?",
@@ -30,14 +21,11 @@ const FAQ = (props) => {
   ]);
 
   return (
-    <ThemeProvider theme={darkTheme}>
-        <CssBaseline/>
-      <Container>
+      <Container maxWidth='md'>
         {questionsState.map((item, i) => {
           return <AccordionPanel question={item} answer={answersState[i]} />;
         })}
       </Container>
-    </ThemeProvider>
   );
 };
 
